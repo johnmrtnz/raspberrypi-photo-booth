@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Booth</title>
+    <style>
+        body { text-align: center; font-family: Arial; padding: 50px; }
+        button { font-size: 24px; padding: 20px 40px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>📸 Photo Booth</h1>
+    <button onclick="takePhoto()">Take Photo</button>
+    <div id="status"></div>
+    
+    <script>
+        function takePhoto() {
+            document.getElementById('status').innerText = 'Capturing...';
+            fetch('/capture')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `photobooth_${Date.now()}.jpg`;
+                    a.click();
+                    document.getElementById('status').innerText = '✓ Photo saved!';
+                });
+        }
+    </script>
+</body>
+</html>
