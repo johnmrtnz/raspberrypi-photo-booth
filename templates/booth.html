@@ -20,6 +20,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-color: #6DC3BB;
         }
 
         h1 {
@@ -66,7 +67,7 @@
     </style>
 </head>
 <body>
-    <h1>📸 Photo Booth</h1>
+    <h1>📸 Bittersweet's Photo Booth</h1>
     <button onclick="takePhoto()">Take Photo</button>
     <div id="status"></div>
     
@@ -79,7 +80,7 @@
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `photobooth_${Date.now()}.jpg`;
+                    a.download = `Bittersweet_${Date.now()}.jpg`;
                     a.click();
                     document.getElementById('status').innerText = '✓ Photo saved!';
                 });
